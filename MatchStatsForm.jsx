@@ -18,10 +18,9 @@ export default function MatchStatsForm({ matchId }) {
   const getPlayerColumnWidth = () => {
     if (players.length === 0) return '140px';
 
-    const longestName = players.reduce((longest, player) => {
-      const fullName = `${player.first_name} ${player.last_name}`;
-      return fullName.length > longest.length ? fullName : longest;
-    }, '--Select Player--'); // Include the placeholder text
+  const longestName = players.reduce((longest, player) => {
+    return player.first_name.length > longest.length ? player.first_name : longest;
+  }, '--Select Player--'); // Include the placeholder text
 
     // More accurate estimation: ~9px per character + padding + dropdown arrow
     const estimatedWidth = Math.max(140, longestName.length * 9 + 60);
@@ -513,8 +512,8 @@ export default function MatchStatsForm({ matchId }) {
           border: '2px solid #c0392b'
         }}>
           <thead>
-            <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7' }}>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
+            <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7', fontSize: '11px' }}>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d', width: getPlayerColumnWidth() }}>Player</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
@@ -551,7 +550,6 @@ export default function MatchStatsForm({ matchId }) {
                       value={row.player1_id}
                       onChange={e => handleChange(i, 'player1_id', e.target.value)}
                       style={{
-                        width: '100%',
                         minWidth: getPlayerColumnWidth(),
                         padding: '4px',
                         borderRadius: '4px',
@@ -596,8 +594,7 @@ export default function MatchStatsForm({ matchId }) {
                         value={row.player2_id}
                         onChange={e => handleChange(i, 'player2_id', e.target.value)}
                         style={{
-                          width: '100%',
-                          minWidth: getDuplicatePlayerStyle(),
+                          minWidth: getPlayerColumnWidth(),
                           padding: '4px',
                           borderRadius: '4px',
                           border: '1px solid #c0392b',
