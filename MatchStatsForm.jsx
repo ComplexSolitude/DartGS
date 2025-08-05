@@ -542,7 +542,7 @@ export default function MatchStatsForm({ matchId }) {
                     fontWeight: 'bold',
                     backgroundColor: i >= 5 ? '#943126' : '#2c3e50',
                     color: '#BDC3C7',
-                    padding: '3px',
+                    padding: '10px',
                     border: '1px solid #7f8c8d'
                   }}>
                     {i + 1}
