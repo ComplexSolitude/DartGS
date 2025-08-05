@@ -514,7 +514,7 @@ export default function MatchStatsForm({ matchId }) {
           <thead>
             <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7', fontSize: '11px' }}>
               <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d', width: getPlayerColumnWidth() }}>Player</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d'}}>Player</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
