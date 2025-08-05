@@ -12,15 +12,7 @@ export default function MatchStatsForm({ matchId }) {
         setLoading(true);
         console.log('Fetching players...'); // Debug log
 
-        const res = await fetch(
-          `https://script.google.com/macros/s/AKfycbxNYIDgPTRsN412kBnvfxcD9zwaPcr4Xpq-b4usQWO1ZWNNGkfJpwlGmQOINEClbG5vdg/exec`,
-          {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-            }
-          }
-        );
+        const res = await fetch('/api/players');
 
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -157,16 +149,13 @@ export default function MatchStatsForm({ matchId }) {
 
       console.log('Submitting entries:', entries); // Debug log
 
-      const res = await fetch(
-        `https://script.google.com/macros/s/AKfycbxNYIDgPTRsN412kBnvfxcD9zwaPcr4Xpq-b4usQWO1ZWNNGkfJpwlGmQOINEClbG5vdg/exec`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(entries)
-        }
-      );
+      const res = await fetch('/api/submitStats', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(entries)
+      });
 
       const text = await res.text();
       console.log('Submit response:', text); // Debug log

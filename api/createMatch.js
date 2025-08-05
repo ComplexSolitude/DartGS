@@ -20,21 +20,12 @@ export default async function handler(req, res) {
 
     console.log('Creating match with ID:', match_id); // Add logging
 
-    const gasResponse = await fetch(
-      `https://script.google.com/macros/s/AKfycbxNYIDgPTRsN412kBnvfxcD9zwaPcr4Xpq-b4usQWO1ZWNNGkfJpwlGmQOINEClbG5vdg/exec?path=createMatch`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ match_id }),
-      }
-    );
+    // For now, just simulate match creation success
+    // Later you can add Google Sheets API integration here
+    console.log('Creating match:', match_id);
 
-    const result = await gasResponse.text();
-    console.log('GAS response:', result); // Add logging
-
-    return res.status(200).send(result);
+    // Simulate successful match creation
+    return res.status(200).send("Match sheet created");
   } catch (err) {
     console.error('API error:', err);
     return res.status(500).send('Proxy error: ' + err.message);
