@@ -198,7 +198,7 @@ export default function MatchStatsForm({ matchId }) {
         value={player ? stats[i][player]?.[field] || '' : stats[i][field]}
         onChange={e => handleChange(i, field, e.target.value, player)}
         style={{
-          maxWidth: '70px',
+          maxWidth: '500px',
           textAlign: 'center',
           padding: '4px',
           border: '1px solid #7f8c8d',
@@ -525,7 +525,7 @@ export default function MatchStatsForm({ matchId }) {
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>180</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Checkout</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>26s</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Tens</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d', minWidth: 40 }}>Tens</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Miss</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>DOTD</th>
             </tr>
@@ -548,11 +548,12 @@ export default function MatchStatsForm({ matchId }) {
                     {i + 1}
                     {i >= 5 && <><br /><small>Doubles</small></>}
                   </td>
-                  <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>
+                  <td style={{ padding: '6px', border: '1px solid #7f8c8d', width: getPlayerColumnWidth(), minWidth:getPlayerColumnWidth() }}>
                     <select
                       value={row.player1_id}
                       onChange={e => handleChange(i, 'player1_id', e.target.value)}
                       style={{
+                        minWidth: getPlayerColumnWidth(),
                         padding: '4px',
                         borderRadius: '4px',
                         border: '1px solid #c0392b',
@@ -581,7 +582,7 @@ export default function MatchStatsForm({ matchId }) {
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_180')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_26')}</td>
-                  <td style={{ padding: '10px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens')}</td>
+                  <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d', minWidth: '125px' }}>{renderTextInput(i, 'tens')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'miss')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'dotd')}</td>
                 </tr>
@@ -591,11 +592,12 @@ export default function MatchStatsForm({ matchId }) {
                     backgroundColor: '#445669',
                     color: '#BDC3C7'
                   }}>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d', }}>
+                    <td style={{ padding: '6px', border: '1px solid #7f8c8d', width: getPlayerColumnWidth(), minWidth:getPlayerColumnWidth() }}>
                       <select
                         value={row.player2_id}
                         onChange={e => handleChange(i, 'player2_id', e.target.value)}
                         style={{
+                          minWidth: getPlayerColumnWidth(),
                           padding: '4px',
                           borderRadius: '4px',
                           border: '1px solid #c0392b',
