@@ -52,7 +52,7 @@ export default function Dashboard() {
         marginBottom: '40px'
       }}>
         <div style={{
-          backgroundColor: '#c0392b',
+          backgroundColor: '#943126',
           padding: '20px 40px',
           borderRadius: '15px',
           marginBottom: '30px',
@@ -62,11 +62,11 @@ export default function Dashboard() {
           <h1 style={{
             fontSize: '2.5rem',
             margin: '0',
-            color: '#ecf0f1',
+            color: '#BDC3C7',
             fontWeight: 'bold',
             textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
           }}>
-            Darts Match Tracker
+            Burnaby Darts Team
           </h1>
         </div>
 
@@ -87,8 +87,8 @@ export default function Dashboard() {
           }}
           onMouseOver={(e) => {
             if (!loading) {
-              e.target.style.backgroundColor = '#c0392b';
-              e.target.style.color = '#ecf0f1';
+              e.target.style.backgroundColor = '#943126';
+              e.target.style.color = '#BDC3C7';
               e.target.style.transform = 'translateY(-2px)';
               e.target.style.boxShadow = '0 6px 20px rgba(192, 57, 43, 0.4)';
             }
@@ -96,7 +96,7 @@ export default function Dashboard() {
           onMouseOut={(e) => {
             if (!loading) {
               e.target.style.backgroundColor = '#34495e';
-              e.target.style.color = '#ecf0f1';
+              e.target.style.color = '#BDC3C7';
               e.target.style.transform = 'translateY(0)';
               e.target.style.boxShadow = '0 4px 15px rgba(192, 57, 43, 0.2)';
             }

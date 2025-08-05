@@ -140,7 +140,7 @@ export default function MatchStatsForm({ matchId }) {
           width: '28px',
           height: '28px',
           fontSize: '14px',
-          backgroundColor: '#c0392b',
+          backgroundColor: '#943126',
           color: '#ecf0f1',
           border: 'none',
           borderRadius: '4px',
@@ -166,7 +166,7 @@ export default function MatchStatsForm({ matchId }) {
           width: '28px',
           height: '28px',
           fontSize: '14px',
-          backgroundColor: '#27ae60',
+          backgroundColor: '#1e8449',
           color: '#ecf0f1',
           border: 'none',
           borderRadius: '4px',
@@ -352,41 +352,47 @@ export default function MatchStatsForm({ matchId }) {
       </style>
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '25px' }}>
+      <div style={{ marginBottom: '25px' }}>
+        {/* Match ID in top left */}
         <div style={{
-          backgroundColor: '#c0392b',
-          padding: '15px 25px',
-          borderRadius: '10px',
-          marginBottom: '15px',
-          border: '2px solid #ecf0f1',
-          display: 'inline-block'
-        }}>
-          <h2 style={{ color: '#ecf0f1', margin: '0', fontWeight: 'bold' }}>Match Stats Entry</h2>
-        </div>
-
-        <div style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
           backgroundColor: '#34495e',
           padding: '8px 15px',
           borderRadius: '8px',
-          marginBottom: '8px',
-          border: '1px solid #c0392b',
-          display: 'inline-block'
+          border: '1px solid #943126'
         }}>
-          <p style={{ color: '#c0392b', fontSize: '14px', margin: '0', fontWeight: 'bold' }}>
+          <p style={{ color: '#1C1818', fontSize: '14px', margin: '0', fontWeight: 'bold' }}>
             Match ID: {matchId}
           </p>
         </div>
 
-        <div style={{
-          backgroundColor: '#445669',
-          padding: '6px 12px',
-          borderRadius: '6px',
-          border: '1px solid #7f8c8d',
-          display: 'inline-block'
-        }}>
-          <p style={{ color: '#bdc3c7', fontSize: '13px', margin: '0' }}>
-            Format: 5 Singles (Legs 1-5) + 2 Doubles (Legs 6-7)
-          </p>
+        {/* Centered title */}
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            backgroundColor: '#943126',
+            padding: '15px 25px',
+            borderRadius: '10px',
+            marginBottom: '15px',
+            border: '2px solid #ecf0f1',
+            display: 'inline-block'
+          }}>
+            <h2 style={{ color: '#bdc3c7', margin: '0', fontWeight: 'bold' }}>Match Stats Entry</h2>
+          </div>
+
+          {/* Format box centered below title */}
+          <div style={{
+            backgroundColor: '#445669',
+            padding: '6px 12px',
+            borderRadius: '6px',
+            border: '1px solid #7f8c8d',
+            display: 'inline-block'
+          }}>
+            <p style={{ color: '#bdc3c7', fontSize: '13px', margin: '0' }}>
+              Format: 5 Singles (Legs 1-5) + 2 Doubles (Legs 6-7)
+            </p>
+          </div>
         </div>
       </div>
 
@@ -412,8 +418,8 @@ export default function MatchStatsForm({ matchId }) {
             margin: '20px',
             border: '2px solid #c0392b'
           }}>
-            <h3 style={{ color: '#c0392b', marginBottom: '15px' }}>⚠️ Duplicate Player Warning</h3>
-            <p style={{ marginBottom: '20px', color: '#ecf0f1' }}>
+            <h3 style={{ color: '#943126', marginBottom: '15px' }}>⚠️ Duplicate Player Warning</h3>
+            <p style={{ marginBottom: '20px', color: '#BDC3C7' }}>
               You have the same player selected for multiple singles matches. Continue anyway?
             </p>
             <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
@@ -422,7 +428,7 @@ export default function MatchStatsForm({ matchId }) {
                 style={{
                   padding: '8px 16px',
                   backgroundColor: '#7f8c8d',
-                  color: '#ecf0f1',
+                  color: '#BDC3C7',
                   border: 'none',
                   borderRadius: '6px',
                   cursor: 'pointer',
@@ -435,8 +441,8 @@ export default function MatchStatsForm({ matchId }) {
                 onClick={handleSubmit}
                 style={{
                   padding: '8px 16px',
-                  backgroundColor: '#c0392b',
-                  color: '#ecf0f1',
+                  backgroundColor: '#943126',
+                  color: '#BDC3C7',
                   border: 'none',
                   borderRadius: '6px',
                   cursor: 'pointer',
@@ -453,9 +459,9 @@ export default function MatchStatsForm({ matchId }) {
       {/* Messages */}
       {message && (
         <div style={{
-          color: message.includes('Error') ? '#ecf0f1' : '#2c3e50',
+          color: message.includes('Error') ? '#BDC3C7' : '#2c3e50',
           padding: '12px',
-          backgroundColor: message.includes('Error') ? '#c0392b' : '#27ae60',
+          backgroundColor: message.includes('Error') ? '#943126' : '#1e8449',
           borderRadius: '8px',
           border: '2px solid #ecf0f1',
           marginBottom: '20px',
@@ -491,8 +497,8 @@ export default function MatchStatsForm({ matchId }) {
         textAlign: 'center',
         border: '1px solid #c0392b'
       }}>
-        <strong style={{ color: '#c0392b' }}>Fine Rates:</strong>
-        <span style={{ color: '#ecf0f1' }}> 26s: £0.26 | Misses: £0.50 | DOTD: £2.50 | Tens: score in pence</span>
+        <strong style={{ color: '#943126' }}>Fine Rates:</strong>
+        <span style={{ color: '#BDC3C7' }}> 26s: £0.26 | Misses: £0.50 | DOTD: £2.50 | Tens: score in pence</span>
       </div>
 
       {/* Table */}
@@ -507,7 +513,7 @@ export default function MatchStatsForm({ matchId }) {
           border: '2px solid #c0392b'
         }}>
           <thead>
-            <tr style={{ backgroundColor: '#2c3e50', color: '#ecf0f1' }}>
+            <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7' }}>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Player</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
@@ -527,13 +533,13 @@ export default function MatchStatsForm({ matchId }) {
               <React.Fragment key={i}>
                 <tr style={{
                   backgroundColor: i >= 5 ? '#445669' : '#34495e',
-                  color: '#ecf0f1'
+                  color: '#BDC3C7'
                 }}>
                   <td rowSpan={i >= 5 ? 2 : 1} style={{
                     textAlign: 'center',
                     fontWeight: 'bold',
-                    backgroundColor: i >= 5 ? '#c0392b' : '#2c3e50',
-                    color: '#ecf0f1',
+                    backgroundColor: i >= 5 ? '#943126' : '#2c3e50',
+                    color: '#BDC3C7',
                     padding: '10px',
                     border: '1px solid #7f8c8d'
                   }}>
@@ -551,7 +557,7 @@ export default function MatchStatsForm({ matchId }) {
                         border: '1px solid #c0392b',
                         fontSize: '13px',
                         backgroundColor: '#2c3e50',
-                        color: '#ecf0f1',
+                        color: '#BDC3C7',
                         ...getDuplicatePlayerStyle(i, row.player1_id)
                       }}
                     >
@@ -582,7 +588,7 @@ export default function MatchStatsForm({ matchId }) {
                 {i >= 5 && (
                   <tr style={{
                     backgroundColor: '#445669',
-                    color: '#ecf0f1'
+                    color: '#BDC3C7'
                   }}>
                     <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>
                       <select
@@ -595,7 +601,7 @@ export default function MatchStatsForm({ matchId }) {
                           border: '1px solid #c0392b',
                           fontSize: '13px',
                           backgroundColor: '#2c3e50',
-                          color: '#ecf0f1'
+                          color: '#BDC3C7'
                         }}
                       >
                         <option value="">--Select Partner--</option>
@@ -631,7 +637,7 @@ export default function MatchStatsForm({ matchId }) {
             padding: '14px 28px',
             fontSize: '16px',
             backgroundColor: submitting ? '#7f8c8d' : '#34495e',
-            color: '#ecf0f1',
+            color: '#BDC3C7',
             border: '2px solid #c0392b',
             borderRadius: '10px',
             cursor: submitting ? 'not-allowed' : 'pointer',
@@ -640,7 +646,7 @@ export default function MatchStatsForm({ matchId }) {
           }}
           onMouseOver={(e) => {
             if (!submitting) {
-              e.target.style.backgroundColor = '#c0392b';
+              e.target.style.backgroundColor = '#943126';
             }
           }}
           onMouseOut={(e) => {
