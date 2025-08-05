@@ -151,7 +151,7 @@ export default function MatchStatsForm({ matchId }) {
         style={{
           width: '28px',
           height: '28px',
-          fontSize: '14px',
+          fontSize: '11px',
           backgroundColor: '#943126',
           color: '#ecf0f1',
           border: 'none',
@@ -516,16 +516,16 @@ export default function MatchStatsForm({ matchId }) {
             <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7', fontSize: '11px' }}>
               <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d'}}>Player</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>140+</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>180</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Checkout</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>26s</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Tens</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Miss</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>DOTD</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>140+</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>180</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Checkout</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>26s</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Tens</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Miss</th>
+              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>DOTD</th>
             </tr>
           </thead>
           <tbody>
@@ -540,7 +540,7 @@ export default function MatchStatsForm({ matchId }) {
                     fontWeight: 'bold',
                     backgroundColor: i >= 5 ? '#943126' : '#2c3e50',
                     color: '#BDC3C7',
-                    padding: '10px',
+                    padding: '3px',
                     border: '1px solid #7f8c8d'
                   }}>
                     {i + 1}
@@ -612,14 +612,14 @@ export default function MatchStatsForm({ matchId }) {
                         ))}
                       </select>
                     </td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_100', 'player2')}</td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_140', 'player2')}</td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_180', 'player2')}</td>
-                    <td style={{ padding: '6px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_26', 'player2')}</td>
-                    <td style={{ padding: '6px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens', 'player2')}</td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'miss', 'player2')}</td>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'dotd', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_100', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_140', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_180', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_26', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'miss', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'dotd', 'player2')}</td>
                   </tr>
                 )}
               </React.Fragment>
