@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+/* Remove horizontal line on rowspan=2 Win/Loss cells (legs 6 & 7) */
+td[rowspan="2"].no-bottom-border {
+  border-bottom: none !important;
+}
