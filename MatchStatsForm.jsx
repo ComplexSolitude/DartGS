@@ -8,7 +8,7 @@ export default function MatchStatsForm({ matchId }) {
   useEffect(() => {
     async function fetchPlayers() {
       try {
-        const res = await fetch('https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec'); // Replace with your actual deployed Apps Script GET URL
+        const res = await fetch(`https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec`); // Replace with your actual deployed Apps Script GET URL
         const data = await res.json();
         setPlayers(data);
       } catch (err) {
