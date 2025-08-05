@@ -45,26 +45,26 @@ export default function Dashboard() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '20px',
-      backgroundColor: '#1a1a1a'
+      backgroundColor: '#2c3e50'
     }}>
       <div style={{
         textAlign: 'center',
         marginBottom: '40px'
       }}>
         <div style={{
-          backgroundColor: '#dc3545',
+          backgroundColor: '#c0392b',
           padding: '20px 40px',
           borderRadius: '15px',
           marginBottom: '30px',
-          boxShadow: '0 8px 25px rgba(220, 53, 69, 0.3)',
-          border: '2px solid #000'
+          boxShadow: '0 8px 25px rgba(192, 57, 43, 0.3)',
+          border: '3px solid #ecf0f1'
         }}>
           <h1 style={{
             fontSize: '2.5rem',
             margin: '0',
-            color: '#000',
+            color: '#ecf0f1',
             fontWeight: 'bold',
-            textShadow: '2px 2px 4px rgba(255,255,255,0.1)'
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
           }}>
             Darts Match Tracker
           </h1>
@@ -76,29 +76,29 @@ export default function Dashboard() {
           style={{
             padding: '16px 32px',
             fontSize: '18px',
-            backgroundColor: loading ? '#666' : '#000',
-            color: loading ? '#999' : '#dc3545',
-            border: '2px solid #dc3545',
+            backgroundColor: loading ? '#7f8c8d' : '#34495e',
+            color: loading ? '#bdc3c7' : '#ecf0f1',
+            border: '2px solid #c0392b',
             borderRadius: '12px',
             cursor: loading ? 'not-allowed' : 'pointer',
-            boxShadow: '0 4px 15px rgba(220, 53, 69, 0.3)',
+            boxShadow: '0 4px 15px rgba(192, 57, 43, 0.2)',
             transition: 'all 0.3s ease',
             fontWeight: 'bold'
           }}
           onMouseOver={(e) => {
             if (!loading) {
-              e.target.style.backgroundColor = '#dc3545';
-              e.target.style.color = '#000';
+              e.target.style.backgroundColor = '#c0392b';
+              e.target.style.color = '#ecf0f1';
               e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 6px 20px rgba(220, 53, 69, 0.5)';
+              e.target.style.boxShadow = '0 6px 20px rgba(192, 57, 43, 0.4)';
             }
           }}
           onMouseOut={(e) => {
             if (!loading) {
-              e.target.style.backgroundColor = '#000';
-              e.target.style.color = '#dc3545';
+              e.target.style.backgroundColor = '#34495e';
+              e.target.style.color = '#ecf0f1';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 15px rgba(220, 53, 69, 0.3)';
+              e.target.style.boxShadow = '0 4px 15px rgba(192, 57, 43, 0.2)';
             }
           }}
         >
