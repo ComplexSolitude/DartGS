@@ -107,7 +107,7 @@ export default function MatchStatsForm({ matchId }) {
     const singlesPlayers = stats.slice(0, 5).map(leg => leg.player1_id);
     const isDuplicate = singlesPlayers.filter(id => id === playerId).length > 1;
     return isDuplicate ? {
-      border: '3px solid #c0392b',
+      border: '3px solid #ecf0f1',
       borderRadius: '6px',
       animation: 'pulse 2s infinite'
     } : {};
@@ -393,19 +393,6 @@ export default function MatchStatsForm({ matchId }) {
           }}>
             <h2 style={{ color: '#bdc3c7', margin: '0', fontWeight: 'bold' }}>Match Stats Entry</h2>
           </div>
-
-          {/* Format box centered below title */}
-          <div style={{
-            backgroundColor: '#445669',
-            padding: '6px 12px',
-            borderRadius: '6px',
-            border: '1px solid #7f8c8d',
-            display: 'inline-block'
-          }}>
-            <p style={{ color: '#bdc3c7', fontSize: '13px', margin: '0' }}>
-              Format: 5 Singles (Legs 1-5) + 2 Doubles (Legs 6-7)
-            </p>
-          </div>
         </div>
       </div>
 
@@ -510,7 +497,7 @@ export default function MatchStatsForm({ matchId }) {
         textAlign: 'center',
         border: '1px solid #c0392b'
       }}>
-        <strong style={{ color: '#943126' }}>Fine Rates:</strong>
+        <strong style={{ color: '#BDC3C7' }}>Fine Rates:</strong>
         <span style={{ color: '#BDC3C7' }}> 26s: £0.26 | Misses: £0.50 | DOTD: £2.50 | Tens: score in pence</span>
       </div>
 
