@@ -16,15 +16,15 @@ export default function MatchStatsForm({ matchId }) {
   };
 
   const getPlayerColumnWidth = () => {
-    if (players.length === 0) return '120px';
+    if (players.length === 0) return '140px';
 
     const longestName = players.reduce((longest, player) => {
       const fullName = `${player.first_name} ${player.last_name}`;
       return fullName.length > longest.length ? fullName : longest;
-    }, '');
+    }, '--Select Player--'); // Include the placeholder text
 
-    // Estimate width: ~8px per character + padding
-    const estimatedWidth = Math.max(120, longestName.length * 8 + 40);
+    // More accurate estimation: ~9px per character + padding + dropdown arrow
+    const estimatedWidth = Math.max(140, longestName.length * 9 + 60);
     return `${estimatedWidth}px`;
   };
 
@@ -546,7 +546,7 @@ export default function MatchStatsForm({ matchId }) {
                     {i + 1}
                     {i >= 5 && <><br /><small>Doubles</small></>}
                   </td>
-                  <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>
+                  <td style={{ padding: '6px', border: '1px solid #7f8c8d', width: getPlayerColumnWidth(), minWidth:getPlayerColumnWidth() }}>
                     <select
                       value={row.player1_id}
                       onChange={e => handleChange(i, 'player1_id', e.target.value)}
@@ -591,7 +591,7 @@ export default function MatchStatsForm({ matchId }) {
                     backgroundColor: '#445669',
                     color: '#BDC3C7'
                   }}>
-                    <td style={{ padding: '6px', border: '1px solid #7f8c8d' }}>
+                    <td style={{ padding: '6px', border: '1px solid #7f8c8d', width: getPlayerColumnWidth(), minWidth:getPlayerColumnWidth() }}>
                       <select
                         value={row.player2_id}
                         onChange={e => handleChange(i, 'player2_id', e.target.value)}
