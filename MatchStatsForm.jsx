@@ -1,4 +1,3 @@
-// MatchStatsForm.jsx
 import React, { useEffect, useState } from 'react';
 import { supabase } from './lib/supabase';
 
@@ -12,10 +11,9 @@ export default function MatchStatsForm({ matchId }) {
 
   // Fine calculation rates
   const FINE_RATES = {
-    SCORE_26: 0.26,      // £0.26 per 26
-    MISS: 0.50,          // £0.50 per miss
-    DOTD: 2.50,          // £2.50 for Dick of the Day
-    // Tens: each score under 10 = that many pence (handled in calculation)
+    SCORE_26: 0.26,
+    MISS: 0.50,
+    DOTD: 2.50,
   };
 
   // Load data from localStorage on component mount
@@ -129,31 +127,24 @@ export default function MatchStatsForm({ matchId }) {
     setStats(updated);
   };
 
-  // Calculate fines for a player's stats
   const calculateFines = (playerStats) => {
     let totalFines = 0;
 
-    // 26s: £0.26 each
     totalFines += playerStats.score_26 * FINE_RATES.SCORE_26;
-
-    // Misses: £0.50 each
     totalFines += playerStats.miss * FINE_RATES.MISS;
-
-    // DOTD: £2.50 each
     totalFines += playerStats.dotd * FINE_RATES.DOTD;
 
-    // Tens: scores under 10 = that many pence
     if (playerStats.tens) {
       const tensScores = playerStats.tens.split(',').map(s => s.trim()).filter(s => s);
       tensScores.forEach(score => {
         const numScore = parseInt(score);
         if (!isNaN(numScore) && numScore < 10) {
-          totalFines += numScore * 0.01; // Convert pence to pounds
+          totalFines += numScore * 0.01;
         }
       });
     }
 
-    return Math.round(totalFines * 100) / 100; // Round to 2 decimal places
+    return Math.round(totalFines * 100) / 100;
   };
 
   const renderTally = (i, field, player = null) => (
@@ -214,9 +205,11 @@ export default function MatchStatsForm({ matchId }) {
         maxWidth: '80px',
         textAlign: 'center',
         padding: '6px',
-        border: '1px solid #ddd',
+        border: '1px solid #dc3545',
         borderRadius: '6px',
-        fontSize: '14px'
+        fontSize: '14px',
+        backgroundColor: '#1a1a1a',
+        color: '#fff'
       }}
       placeholder={field === 'tens' ? 'e.g. 9,8,4' : ''}
     />
@@ -236,12 +229,10 @@ export default function MatchStatsForm({ matchId }) {
     setShowDuplicateWarning(false);
 
     try {
-      // Prepare match stats entries
       const matchStatsEntries = [];
       const fineEntries = [];
 
       stats.forEach((entry, legIndex) => {
-        // Process Player 1
         if (entry.player1_id) {
           const player1Stats = {
             match_id: matchId,
@@ -256,12 +247,11 @@ export default function MatchStatsForm({ matchId }) {
             tens: entry.tens,
             miss: entry.miss,
             dotd: entry.dotd,
-            is_double: legIndex >= 5 // Legs 6-7 are doubles (index 5-6)
+            is_double: legIndex >= 5
           };
 
           matchStatsEntries.push(player1Stats);
 
-          // Calculate and add fines for Player 1
           const player1Fines = calculateFines({
             score_26: entry.score_26,
             tens: entry.tens,
@@ -278,12 +268,11 @@ export default function MatchStatsForm({ matchId }) {
           }
         }
 
-        // Process Player 2 (for doubles legs)
         if (entry.player2_id && legIndex >= 5) {
           const player2Stats = {
             match_id: matchId,
             player_id: entry.player2_id,
-            win: 0, // Win/loss shared with partner, so set to 0 for player 2
+            win: 0,
             loss: 0,
             score_100: entry.player2?.score_100 || 0,
             score_140: entry.player2?.score_140 || 0,
@@ -298,7 +287,6 @@ export default function MatchStatsForm({ matchId }) {
 
           matchStatsEntries.push(player2Stats);
 
-          // Calculate and add fines for Player 2
           const player2Fines = calculateFines({
             score_26: entry.player2?.score_26 || 0,
             tens: entry.player2?.tens || '',
@@ -319,7 +307,6 @@ export default function MatchStatsForm({ matchId }) {
       console.log('Submitting match stats:', matchStatsEntries);
       console.log('Submitting fines:', fineEntries);
 
-      // Insert match stats
       const { error: statsError } = await supabase
         .from('match_stats')
         .insert(matchStatsEntries);
@@ -328,7 +315,6 @@ export default function MatchStatsForm({ matchId }) {
         throw new Error('Failed to save match stats: ' + statsError.message);
       }
 
-      // Insert fines
       if (fineEntries.length > 0) {
         const { error: finesError } = await supabase
           .from('fines')
@@ -361,7 +347,9 @@ export default function MatchStatsForm({ matchId }) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '20px'
+        padding: '20px',
+        backgroundColor: '#1a1a1a',
+        color: '#fff'
       }}>
         <h2>Loading...</h2>
         <p>Fetching players from database...</p>
@@ -373,8 +361,9 @@ export default function MatchStatsForm({ matchId }) {
     <div style={{
       padding: '10px',
       maxWidth: '100%',
-      backgroundColor: '#f8f9fa',
-      minHeight: '100vh'
+      backgroundColor: '#1a1a1a',
+      minHeight: '100vh',
+      color: '#fff'
     }}>
       <style>
         {`
@@ -403,13 +392,42 @@ export default function MatchStatsForm({ matchId }) {
         textAlign: 'center',
         marginBottom: '20px'
       }}>
-        <h2 style={{ color: '#2c3e50', marginBottom: '10px' }}>Match Stats Entry</h2>
-        <p style={{ color: '#6c757d', fontSize: '14px' }}>
-          <strong>Match ID:</strong> {matchId}
-        </p>
-        <p style={{ color: '#6c757d', fontSize: '14px' }}>
-          <em>Format: 5 Singles (Legs 1-5) + 2 Doubles (Legs 6-7)</em>
-        </p>
+        <div style={{
+          backgroundColor: '#dc3545',
+          padding: '15px 30px',
+          borderRadius: '12px',
+          marginBottom: '15px',
+          boxShadow: '0 6px 20px rgba(220, 53, 69, 0.3)',
+          border: '2px solid #000',
+          display: 'inline-block'
+        }}>
+          <h2 style={{ color: '#000', margin: '0', fontWeight: 'bold' }}>Match Stats Entry</h2>
+        </div>
+
+        <div style={{
+          backgroundColor: '#333',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          marginBottom: '10px',
+          border: '1px solid #dc3545',
+          display: 'inline-block'
+        }}>
+          <p style={{ color: '#dc3545', fontSize: '14px', margin: '0' }}>
+            <strong>Match ID:</strong> {matchId}
+          </p>
+        </div>
+
+        <div style={{
+          backgroundColor: '#2d2d2d',
+          padding: '8px 16px',
+          borderRadius: '6px',
+          border: '1px solid #666',
+          display: 'inline-block'
+        }}>
+          <p style={{ color: '#ccc', fontSize: '14px', margin: '0' }}>
+            <em>Format: 5 Singles (Legs 1-5) + 2 Doubles (Legs 6-7)</em>
+          </p>
+        </div>
       </div>
 
       {/* Duplicate Player Warning Modal */}
@@ -427,15 +445,16 @@ export default function MatchStatsForm({ matchId }) {
           zIndex: 1000
         }}>
           <div style={{
-            backgroundColor: 'white',
+            backgroundColor: '#2d2d2d',
             padding: '20px',
             borderRadius: '12px',
             boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
             maxWidth: '400px',
-            margin: '20px'
+            margin: '20px',
+            border: '2px solid #dc3545'
           }}>
             <h3 style={{ color: '#dc3545', marginBottom: '15px' }}>⚠️ Duplicate Player Warning</h3>
-            <p style={{ marginBottom: '20px' }}>
+            <p style={{ marginBottom: '20px', color: '#fff' }}>
               You have the same player selected for multiple singles matches. Are you sure you want to continue?
             </p>
             <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
@@ -472,13 +491,15 @@ export default function MatchStatsForm({ matchId }) {
 
       {message && (
         <div style={{
-          color: message.includes('Error') ? 'red' : 'green',
+          color: message.includes('Error') ? '#fff' : '#000',
           padding: '12px',
-          backgroundColor: message.includes('Error') ? '#f8d7da' : '#d4edda',
+          backgroundColor: message.includes('Error') ? '#dc3545' : '#28a745',
           borderRadius: '8px',
-          border: `1px solid ${message.includes('Error') ? '#f5c6cb' : '#c3e6cb'}`,
+          border: `2px solid #000`,
           marginBottom: '20px',
-          textAlign: 'center'
+          textAlign: 'center',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
         }}>
           {message}
         </div>
@@ -486,28 +507,32 @@ export default function MatchStatsForm({ matchId }) {
 
       {players.length === 0 && !loading && (
         <div style={{
-          color: '#856404',
+          color: '#000',
           padding: '12px',
-          backgroundColor: '#fff3cd',
+          backgroundColor: '#ffc107',
           borderRadius: '8px',
-          border: '1px solid #ffeaa7',
+          border: '2px solid #000',
           marginBottom: '20px',
-          textAlign: 'center'
+          textAlign: 'center',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
         }}>
           No players found in database. Please add some players to your profiles table.
         </div>
       )}
 
       <div style={{
-        backgroundColor: '#fff',
+        backgroundColor: '#333',
         padding: '12px',
         borderRadius: '8px',
         marginBottom: '20px',
         fontSize: '14px',
         textAlign: 'center',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        border: '1px solid #dc3545'
       }}>
-        <strong>Fine Rates:</strong> 26s: £0.26 each | Misses: £0.50 each | DOTD: £2.50 each | Tens: score in pence (e.g. 9 = 9p)
+        <strong style={{ color: '#dc3545' }}>Fine Rates:</strong>
+        <span style={{ color: '#fff' }}> 26s: £0.26 each | Misses: £0.50 each | DOTD: £2.50 each | Tens: score in pence (e.g. 9 = 9p)</span>
       </div>
 
       <div style={{ overflowX: 'auto' }}>
@@ -517,46 +542,49 @@ export default function MatchStatsForm({ matchId }) {
             borderCollapse: 'collapse',
             width: '100%',
             minWidth: '800px',
-            backgroundColor: 'white',
+            backgroundColor: '#2d2d2d',
             borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            boxShadow: '0 6px 20px rgba(0,0,0,0.4)',
+            border: '2px solid #dc3545'
           }}
         >
           <thead>
-            <tr style={{ backgroundColor: '#343a40', color: 'white' }}>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Leg</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Player</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Win</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Loss</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>100+</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>140+</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>180</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Checkout</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>26s</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Tens</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>Miss</th>
-              <th style={{ padding: '12px', textAlign: 'center' }}>DOTD</th>
+            <tr style={{ backgroundColor: '#000', color: '#dc3545' }}>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Leg</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Player</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Win</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Loss</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>100+</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>140+</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>180</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Checkout</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>26s</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Tens</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>Miss</th>
+              <th style={{ padding: '12px', textAlign: 'center', border: '1px solid #dc3545' }}>DOTD</th>
             </tr>
           </thead>
           <tbody>
             {stats.map((row, i) => (
               <React.Fragment key={i}>
                 <tr style={{
-                  backgroundColor: i >= 5 ? '#fff3cd' : 'white',
-                  borderBottom: '1px solid #dee2e6'
+                  backgroundColor: i >= 5 ? '#4d1f1f' : '#2d2d2d',
+                  borderBottom: '1px solid #dc3545',
+                  color: '#fff'
                 }}>
                   <td rowSpan={i >= 5 ? 2 : 1} style={{
                     textAlign: 'center',
                     fontWeight: 'bold',
-                    backgroundColor: i >= 5 ? '#ffc107' : '#007bff',
-                    color: 'white',
-                    padding: '12px'
+                    backgroundColor: i >= 5 ? '#dc3545' : '#000',
+                    color: i >= 5 ? '#000' : '#dc3545',
+                    padding: '12px',
+                    border: '1px solid #dc3545'
                   }}>
                     {i + 1}
                     {i >= 5 && <><br /><small>Doubles</small></>}
                   </td>
-                  <td style={{ padding: '8px' }}>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>
                     <select
                       value={row.player1_id}
                       onChange={e => handleChange(i, 'player1_id', e.target.value)}
@@ -564,41 +592,44 @@ export default function MatchStatsForm({ matchId }) {
                         width: '100%',
                         padding: '6px',
                         borderRadius: '6px',
-                        border: '1px solid #ddd',
+                        border: '1px solid #dc3545',
                         fontSize: '14px',
+                        backgroundColor: '#1a1a1a',
+                        color: '#fff',
                         ...getDuplicatePlayerStyle(i, row.player1_id)
                       }}
                     >
                       <option value="">--Select Player--</option>
                       {players.map(p => (
-                        <option key={p.id} value={p.id}>
+                        <option key={p.id} value={p.id} style={{ backgroundColor: '#1a1a1a', color: '#fff' }}>
                           {p.first_name} {p.last_name}
                         </option>
                       ))}
                     </select>
                   </td>
-                  <td className={i >= 5 ? "no-bottom-border" : ""} rowSpan={i >= 5 ? 2 : 1} style={{ padding: '8px' }}>
+                  <td className={i >= 5 ? "no-bottom-border" : ""} rowSpan={i >= 5 ? 2 : 1} style={{ padding: '8px', border: '1px solid #666' }}>
                     {renderTally(i, 'win')}
                   </td>
-                  <td className={i >= 5 ? "no-bottom-border" : ""} rowSpan={i >= 5 ? 2 : 1} style={{ padding: '8px' }}>
+                  <td className={i >= 5 ? "no-bottom-border" : ""} rowSpan={i >= 5 ? 2 : 1} style={{ padding: '8px', border: '1px solid #666' }}>
                     {renderTally(i, 'loss')}
                   </td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'score_100')}</td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'score_140')}</td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'score_180')}</td>
-                  <td style={{ padding: '8px' }}>{renderTextInput(i, 'highest_checkout')}</td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'score_26')}</td>
-                  <td style={{ padding: '8px' }}>{renderTextInput(i, 'tens')}</td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'miss')}</td>
-                  <td style={{ padding: '8px' }}>{renderTally(i, 'dotd')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_100')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_140')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_180')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTextInput(i, 'highest_checkout')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_26')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTextInput(i, 'tens')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'miss')}</td>
+                  <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'dotd')}</td>
                 </tr>
 
                 {i >= 5 && (
                   <tr style={{
-                    backgroundColor: '#fff3cd',
-                    borderBottom: '1px solid #dee2e6'
+                    backgroundColor: '#4d1f1f',
+                    borderBottom: '1px solid #dc3545',
+                    color: '#fff'
                   }}>
-                    <td style={{ padding: '8px' }}>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>
                       <select
                         value={row.player2_id}
                         onChange={e => handleChange(i, 'player2_id', e.target.value)}
@@ -606,26 +637,28 @@ export default function MatchStatsForm({ matchId }) {
                           width: '100%',
                           padding: '6px',
                           borderRadius: '6px',
-                          border: '1px solid #ddd',
-                          fontSize: '14px'
+                          border: '1px solid #dc3545',
+                          fontSize: '14px',
+                          backgroundColor: '#1a1a1a',
+                          color: '#fff'
                         }}
                       >
                         <option value="">--Select Partner--</option>
                         {players.filter(p => p.id !== row.player1_id).map(p => (
-                          <option key={p.id} value={p.id}>
+                          <option key={p.id} value={p.id} style={{ backgroundColor: '#1a1a1a', color: '#fff' }}>
                             {p.first_name} {p.last_name}
                           </option>
                         ))}
                       </select>
                     </td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'score_100', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'score_140', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'score_180', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'score_26', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTextInput(i, 'tens', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'miss', 'player2')}</td>
-                    <td style={{ padding: '8px' }}>{renderTally(i, 'dotd', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_100', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_140', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_180', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'score_26', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTextInput(i, 'tens', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'miss', 'player2')}</td>
+                    <td style={{ padding: '8px', border: '1px solid #666' }}>{renderTally(i, 'dotd', 'player2')}</td>
                   </tr>
                 )}
               </React.Fragment>
@@ -641,13 +674,30 @@ export default function MatchStatsForm({ matchId }) {
           style={{
             padding: '16px 32px',
             fontSize: '16px',
-            backgroundColor: submitting ? '#ccc' : '#28a745',
-            color: 'white',
-            border: 'none',
+            backgroundColor: submitting ? '#666' : '#000',
+            color: submitting ? '#999' : '#dc3545',
+            border: '2px solid #dc3545',
             borderRadius: '12px',
             cursor: submitting ? 'not-allowed' : 'pointer',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-            fontWeight: 'bold'
+            boxShadow: '0 4px 15px rgba(220, 53, 69, 0.3)',
+            fontWeight: 'bold',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => {
+            if (!submitting) {
+              e.target.style.backgroundColor = '#dc3545';
+              e.target.style.color = '#000';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(220, 53, 69, 0.5)';
+            }
+          }}
+          onMouseOut={(e) => {
+            if (!submitting) {
+              e.target.style.backgroundColor = '#000';
+              e.target.style.color = '#dc3545';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 15px rgba(220, 53, 69, 0.3)';
+            }
           }}
         >
           {submitting ? 'Saving Stats & Calculating Fines...' : 'Submit All Stats & Calculate Fines'}
