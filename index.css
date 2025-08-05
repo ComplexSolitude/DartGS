@@ -1,10 +1,84 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa;
+  line-height: 1.6;
 }
+
 /* Remove horizontal line on rowspan=2 Win/Loss cells (legs 6 & 7) */
 td[rowspan="2"].no-bottom-border {
   border-bottom: none !important;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .match-table {
+    font-size: 11px;
+  }
+
+  .match-table th,
+  .match-table td {
+    padding: 3px !important;
+  }
+
+  .match-table select {
+    font-size: 11px;
+    padding: 3px !important;
+  }
+
+  .match-table input {
+    font-size: 11px;
+    padding: 3px !important;
+    max-width: 60px !important;
+  }
+
+  button {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .match-table {
+    font-size: 10px;
+  }
+
+  .match-table th,
+  .match-table td {
+    padding: 2px !important;
+  }
+
+  .match-table select {
+    font-size: 10px;
+    padding: 2px !important;
+  }
+
+  .match-table input {
+    font-size: 10px;
+    max-width: 50px !important;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Button hover effects */
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
