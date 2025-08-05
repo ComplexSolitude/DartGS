@@ -43,8 +43,8 @@ export default function Dashboard() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
+      justifyContent: 'flex-start',
+      padding: '100px',
       backgroundColor: '#2c3e50'
     }}>
       <div style={{
