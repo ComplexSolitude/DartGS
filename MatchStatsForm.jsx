@@ -497,6 +497,17 @@ export default function MatchStatsForm({ matchId }) {
         border: '1px solid #c0392b'
       }}>
         <strong style={{ color: '#BDC3C7' }}>Fine Rates:</strong>
+      </div>
+
+      <div style={{
+        backgroundColor: '#34495e',
+        padding: '12px',
+        borderRadius: '8px',
+        marginBottom: '20px',
+        fontSize: '14px',
+        textAlign: 'center',
+        border: '1px solid #c0392b'
+      }}>
         <span style={{ color: '#BDC3C7' }}> 26s: £0.26 | Misses: £0.50 | DOTD: £2.50 | Tens: score in pence</span>
       </div>
 
