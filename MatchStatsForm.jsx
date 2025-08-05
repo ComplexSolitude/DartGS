@@ -378,7 +378,7 @@ export default function MatchStatsForm({ matchId }) {
               </tr>
 
               {i >= 5 && (
-                <tr style={{ backgroundColor: '#fff3cd' }}>
+                <tr style={{ backgroundColor: '#783A3A' }}>
                   <td>
                     <select
                       value={row.player2_id}
