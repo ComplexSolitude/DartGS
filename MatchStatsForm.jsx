@@ -317,7 +317,7 @@ export default function MatchStatsForm({ matchId }) {
         <strong>Fine Rates:</strong> 26s: £0.26 each | Misses: £0.50 each | DOTD: £2.50 each | Tens: score in pence (e.g. 9 = 9p)
       </div>
 
-      <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%' }}>
+      <table border="1" cellPadding="5" style={{ borderCollapse: 'collapse', width: '100%' }}>
         <thead>
           <tr style={{ backgroundColor: '#f5f5f5' }}>
             <th>Leg</th>
