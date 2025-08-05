@@ -4,7 +4,7 @@ export default async function handler(req, res) {
 
   try {
     const gasResponse = await fetch(
-      `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?path=createMatch`,
+      `https://script.google.com/macros/s/AKfycbwE_msBcUxGPeZxH7JAHnM7SnuKFTOfbnm0pe-CR2BChXeWcjr8WM_adAH4gVdFGEnaHQ/exec?path=createMatch`,
       {
         method: 'POST',
         headers: {
