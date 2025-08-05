@@ -1,6 +1,9 @@
 // /api/createMatch.js
 export default async function handler(req, res) {
-  const match_id = req.body.match_id;
+    if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+    
 
   try {
     const gasResponse = await fetch(
