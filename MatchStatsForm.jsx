@@ -15,6 +15,19 @@ export default function MatchStatsForm({ matchId }) {
     DOTD: 2.50,
   };
 
+  const getPlayerColumnWidth = () => {
+    if (players.length === 0) return '120px';
+
+    const longestName = players.reduce((longest, player) => {
+      const fullName = `${player.first_name} ${player.last_name}`;
+      return fullName.length > longest.length ? fullName : longest;
+    }, '');
+
+    // Estimate width: ~8px per character + padding
+    const estimatedWidth = Math.max(120, longestName.length * 8 + 40);
+    return `${estimatedWidth}px`;
+  };
+
   useEffect(() => {
     const savedData = localStorage.getItem(`match_${matchId}`);
     if (savedData) {
@@ -352,19 +365,19 @@ export default function MatchStatsForm({ matchId }) {
       </style>
 
       {/* Header */}
-      <div style={{ marginBottom: '25px' }}>
-        {/* Match ID in top left */}
+      <div style={{ marginBottom: '25px', position: 'relative', paddingTop: '50px' }}>
+        {/* Match ID in top left - smaller and more subtle */}
         <div style={{
           position: 'absolute',
-          top: '20px',
-          left: '20px',
+          top: '0px',
+          left: '0px',
           backgroundColor: '#34495e',
-          padding: '8px 15px',
-          borderRadius: '8px',
+          padding: '4px 8px',
+          borderRadius: '4px',
           border: '1px solid #943126'
         }}>
-          <p style={{ color: '#1C1818', fontSize: '14px', margin: '0', fontWeight: 'bold' }}>
-            Match ID: {matchId}
+          <p style={{ color: '#1C1818', fontSize: '11px', margin: '0', fontWeight: 'normal' }}>
+            ID: {matchId}
           </p>
         </div>
 
@@ -515,7 +528,7 @@ export default function MatchStatsForm({ matchId }) {
           <thead>
             <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7' }}>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
-              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Player</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d', width: getPlayerColumnWidth() }}>Player</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
@@ -552,6 +565,7 @@ export default function MatchStatsForm({ matchId }) {
                       onChange={e => handleChange(i, 'player1_id', e.target.value)}
                       style={{
                         width: '100%',
+                        minWidth: getPlayerColumnWidth(),
                         padding: '4px',
                         borderRadius: '4px',
                         border: '1px solid #c0392b',
@@ -596,6 +610,7 @@ export default function MatchStatsForm({ matchId }) {
                         onChange={e => handleChange(i, 'player2_id', e.target.value)}
                         style={{
                           width: '100%',
+                          minWidth: getDuplicatePlayerStyle(),
                           padding: '4px',
                           borderRadius: '4px',
                           border: '1px solid #c0392b',
