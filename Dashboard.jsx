@@ -1,4 +1,3 @@
-// Dashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,16 +8,24 @@ export default function Dashboard() {
     const newMatchId = `match_${Date.now()}`;
 
     try {
-      await fetch('/api/createMatch', {
+      const response = await fetch('./api/createMatch', {
         method: 'POST',
         headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
+          'Content-Type': 'application/json' // Fixed: should be application/json, not text/plain
         },
         body: JSON.stringify({ match_id: newMatchId })
       });
 
-      navigate(`/match/${newMatchId}`);
+      const result = await response.text();
+      console.log('Create match response:', result); // Add logging for debugging
+      
+      if (response.ok) {
+        navigate(`/match/${newMatchId}`);
+      } else {
+        alert("Failed to create match: " + result);
+      }
     } catch (err) {
+      console.error('Error creating match:', err);
       alert("Failed to create match: " + err.message);
     }
   };
