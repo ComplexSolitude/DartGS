@@ -5,23 +5,23 @@ import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   const navigate = useNavigate();
 
-const handleCreateMatch = async () => {
-  const newMatchId = `match_${Date.now()}`;
+  const handleCreateMatch = async () => {
+    const newMatchId = `match_${Date.now()}`;
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbwE_msBcUxGPeZxH7JAHnM7SnuKFTOfbnm0pe-CR2BChXeWcjr8WM_adAH4gVdFGEnaHQ/exec?path=createMatch", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ match_id: newMatchId })
-    });
+    try {
+      await fetch('/api/createMatch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ match_id: newMatchId })
+      });
 
-    navigate(`/match/${newMatchId}`);
-  } catch (err) {
-    alert("Failed to create match: " + err.message);
-  }
-};
+      navigate(`/match/${newMatchId}`);
+    } catch (err) {
+      alert("Failed to create match: " + err.message);
+    }
+  };
 
   return (
     <div style={{ padding: 20 }}>
