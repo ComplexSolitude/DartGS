@@ -9,7 +9,7 @@ export default function Dashboard() {
     const newMatchId = `match_${Date.now()}`;
 
     try {
-      await fetch('/api/createMatch', {
+      await fetch('./api/createMatch', {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
