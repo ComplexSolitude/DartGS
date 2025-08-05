@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     console.log('Creating match with ID:', match_id); // Add logging
 
     const gasResponse = await fetch(
-      `https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec?path=createMatch`,
+      `https://script.google.com/macros/s/AKfycbxNYIDgPTRsN412kBnvfxcD9zwaPcr4Xpq-b4usQWO1ZWNNGkfJpwlGmQOINEClbG5vdg/exec?path=createMatch`,
       {
         method: 'POST',
         headers: {
