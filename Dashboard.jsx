@@ -38,24 +38,59 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Darts Match Tracker</h1>
-      <p>Track your match stats and calculate fines automatically</p>
-      <button
-        onClick={handleCreateMatch}
-        disabled={loading}
-        style={{
-          padding: '12px 24px',
-          fontSize: '16px',
-          backgroundColor: loading ? '#ccc' : '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '6px',
-          cursor: loading ? 'not-allowed' : 'pointer'
-        }}
-      >
-        {loading ? 'Creating Match...' : 'Create New Match'}
-      </button>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px',
+      backgroundColor: '#f8f9fa'
+    }}>
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '40px'
+      }}>
+        <h1 style={{
+          fontSize: '2.5rem',
+          marginBottom: '20px',
+          color: '#2c3e50',
+          fontWeight: 'bold'
+        }}>
+          Darts Match Tracker
+        </h1>
+
+        <button
+          onClick={handleCreateMatch}
+          disabled={loading}
+          style={{
+            padding: '16px 32px',
+            fontSize: '18px',
+            backgroundColor: loading ? '#ccc' : '#28a745',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transition: 'all 0.3s ease',
+            fontWeight: 'bold'
+          }}
+          onMouseOver={(e) => {
+            if (!loading) {
+              e.target.style.backgroundColor = '#218838';
+              e.target.style.transform = 'translateY(-2px)';
+            }
+          }}
+          onMouseOut={(e) => {
+            if (!loading) {
+              e.target.style.backgroundColor = '#28a745';
+              e.target.style.transform = 'translateY(0)';
+            }
+          }}
+        >
+          {loading ? 'Creating Match...' : 'Create New Match'}
+        </button>
+      </div>
     </div>
   );
 }
