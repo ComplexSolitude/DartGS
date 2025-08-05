@@ -589,9 +589,9 @@ export default function MatchStatsForm({ matchId }) {
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_100')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_140')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_180')}</td>
-                  <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout')}</td>
+                  <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_26')}</td>
-                  <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens')}</td>
+                  <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'miss')}</td>
                   <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'dotd')}</td>
                 </tr>
@@ -626,9 +626,9 @@ export default function MatchStatsForm({ matchId }) {
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_100', 'player2')}</td>
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_140', 'player2')}</td>
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_180', 'player2')}</td>
-                    <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'highest_checkout', 'player2')}</td>
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'score_26', 'player2')}</td>
-                    <td style={{ padding: '6px', fontSize: '11px', textAlign:"center", border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens', 'player2')}</td>
+                    <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTextInput(i, 'tens', 'player2')}</td>
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'miss', 'player2')}</td>
                     <td style={{ padding: '6px', fontSize: '11px', border: '1px solid #7f8c8d' }}>{renderTally(i, 'dotd', 'player2')}</td>
                   </tr>
