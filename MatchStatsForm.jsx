@@ -344,7 +344,7 @@ export default function MatchStatsForm({ matchId }) {
                   color: 'white'
                 }}>
                   {i + 1}
-                  {i >= 5 && <br /><small>Doubles</small>}
+                  {i >= 5 && <><br /><small>Doubles</small></>}
                 </td>
                 <td>
                   <select
