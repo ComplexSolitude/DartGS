@@ -518,16 +518,16 @@ export default function MatchStatsForm({ matchId }) {
             <tr style={{ backgroundColor: '#2c3e50', color: '#BDC3C7', fontSize: '11px' }}>
               <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Leg</th>
               <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d'}}>Player</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>140+</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>180</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Checkout</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>26s</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Tens</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Miss</th>
-              <th style={{ padding: '3px', textAlign: 'center', border: '1px solid #7f8c8d' }}>DOTD</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Win</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Loss</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>100+</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>140+</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>180</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Checkout</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>26s</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Tens</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>Miss</th>
+              <th style={{ padding: '10px', textAlign: 'center', border: '1px solid #7f8c8d' }}>DOTD</th>
             </tr>
           </thead>
           <tbody>
