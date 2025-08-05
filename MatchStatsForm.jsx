@@ -341,7 +341,7 @@ export default function MatchStatsForm({ matchId }) {
                 <td rowSpan={i >= 5 ? 2 : 1} style={{
                   textAlign: 'center',
                   fontWeight: 'bold',
-                  backgroundColor: i >= 5 ? '#ffc107' : '#007bff',
+                  backgroundColor: i >= 5 ? '#780101' : '#000000',
                   color: 'white'
                 }}>
                   {i + 1}
