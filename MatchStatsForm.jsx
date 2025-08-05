@@ -110,7 +110,7 @@ export default function MatchStatsForm({ matchId }) {
     }).flat();
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec", {
+      const res = await fetch(`https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
