@@ -192,23 +192,25 @@ export default function MatchStatsForm({ matchId }) {
   );
 
   const renderTextInput = (i, field, player = null) => (
-    <input
-      type="text"
-      value={player ? stats[i][player]?.[field] || '' : stats[i][field]}
-      onChange={e => handleChange(i, field, e.target.value, player)}
-      style={{
-        width: '100%',
-        maxWidth: '70px',
-        textAlign: 'center',
-        padding: '4px',
-        border: '1px solid #7f8c8d',
-        borderRadius: '4px',
-        fontSize: '12px',
-        backgroundColor: '#2c3e50',
-        color: '#ecf0f1'
-      }}
-      placeholder={field === 'tens' ? '9,8,4' : ''}
-    />
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <input
+        type="text"
+        value={player ? stats[i][player]?.[field] || '' : stats[i][field]}
+        onChange={e => handleChange(i, field, e.target.value, player)}
+        style={{
+          maxWidth: '70px',
+          textAlign: 'center',
+          padding: '4px',
+          border: '1px solid #7f8c8d',
+          borderRadius: '4px',
+          fontSize: '12px',
+          backgroundColor: '#2c3e50',
+          color: '#ecf0f1',
+          width: '100%' // keep this so the input doesn't collapse
+        }}
+        placeholder={field === 'tens' ? '9,8,4' : ''}
+      />
+    </div>
   );
 
   const handleSubmitAttempt = () => {
