@@ -284,7 +284,7 @@ export default function MatchStatsForm({ matchId }) {
         <div style={{
           color: message.includes('Error') ? 'red' : 'green',
           padding: '12px',
-          backgroundColor: message.includes('Error') ? '#ffebee' : '#e8f5e8',
+          backgroundColor: message.includes('Error') ? '#783A3A' : '#e8f5e8',
           borderRadius: '6px',
           border: `1px solid ${message.includes('Error') ? '#f44336' : '#4caf50'}`,
           marginBottom: '20px'
@@ -415,7 +415,7 @@ export default function MatchStatsForm({ matchId }) {
           marginTop: '20px',
           padding: '12px 24px',
           fontSize: '16px',
-          backgroundColor: submitting ? '#ccc' : '#28a745',
+          backgroundColor: submitting ? '#ccc' : '#4A1212',
           color: 'white',
           border: 'none',
           borderRadius: '6px',
