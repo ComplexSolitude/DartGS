@@ -337,7 +337,7 @@ export default function MatchStatsForm({ matchId }) {
         <tbody>
           {stats.map((row, i) => (
             <React.Fragment key={i}>
-              <tr style={{ backgroundColor: i >= 5 ? '#fff3cd' : 'white' }}>
+              <tr style={{ backgroundColor: i >= 5 ? '#783A3A' : 'white' }}>
                 <td rowSpan={i >= 5 ? 2 : 1} style={{
                   textAlign: 'center',
                   fontWeight: 'bold',
