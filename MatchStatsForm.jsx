@@ -8,7 +8,7 @@ export default function MatchStatsForm({ matchId }) {
   useEffect(() => {
     async function fetchPlayers() {
       try {
-        const res = await fetch('https://script.google.com/macros/s/AKfycbwE_msBcUxGPeZxH7JAHnM7SnuKFTOfbnm0pe-CR2BChXeWcjr8WM_adAH4gVdFGEnaHQ/exec'); // Replace with your actual deployed Apps Script GET URL
+        const res = await fetch('https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec'); // Replace with your actual deployed Apps Script GET URL
         const data = await res.json();
         setPlayers(data);
       } catch (err) {
@@ -110,7 +110,7 @@ export default function MatchStatsForm({ matchId }) {
     }).flat();
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwE_msBcUxGPeZxH7JAHnM7SnuKFTOfbnm0pe-CR2BChXeWcjr8WM_adAH4gVdFGEnaHQ/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbxBFjF3NOVGgVW59uZmPYECXG9k36LX_hKhMxGs7B1pFjMadx-0mHK-GHlIdFmVvzAK8A/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
