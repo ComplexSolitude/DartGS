@@ -14,7 +14,7 @@ export default function App() {
             backgroundColor: '#222'
         }}>
             <img
-              src="/logo.png"
+              src="/Arms#.jpg"
               alt="Logo"
               style={{ maxHeight: '60px' }}
             />
